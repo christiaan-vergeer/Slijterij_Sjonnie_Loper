@@ -9,6 +9,7 @@ namespace Slijterij_Sjonnie_Loper.Data
     public interface IWhiskeyData
     {
         IEnumerable<Whiskey> Getall();
+        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage);
     }
 
     public class InMemoryWhiskeyData : IWhiskeyData
@@ -30,5 +31,15 @@ namespace Slijterij_Sjonnie_Loper.Data
         {
             return from r in whiskeys orderby r.Name select r;
         }
+
+        public IEnumerable<Whiskey> GetAllByFind(string name, int age)
+        {
+            return from r in whiskeys where
+                   (string.IsNullOrEmpty(name) || r.Name.Contains(name)) &&
+                   (age == 0 || r.Age == age)
+                   orderby r.Name 
+                   select r;
+        }
+
     }
 }

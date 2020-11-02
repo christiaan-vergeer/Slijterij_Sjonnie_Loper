@@ -4,13 +4,27 @@
 }
 
 <h1>Whiskey</h1>
+
+<form method="get">
+    <p>
+        Name: <input type="text" asp-for="searchname" />
+        Age: <input type="number" asp-for="searchage" />
+        Area: <input type="text" asp-for="searcharea" />
+        Type: <input type="text" asp-for="searchtype" />
+        Alchol-Percentage: <input type="number" asp-for="searchper" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     @foreach (var whiskey in Model.Whiskeys)
     {
-        <tr>
-            <td>@whiskey.Name</td>
-            <td>@whiskey.Kind</td>
-        </tr>
+    <tr>
+        <td>@whiskey.Name</td>
+        <td>@whiskey.Age</td>
+        <td>@whiskey.Area</td>
+        <td>@whiskey.Kind</td>
+        <td>@whiskey.Percentage</td>
+    </tr>
     }
 </table>
 @Model.message
