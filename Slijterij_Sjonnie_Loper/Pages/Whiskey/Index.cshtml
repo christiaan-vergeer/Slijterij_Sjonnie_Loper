@@ -1,0 +1,16 @@
+﻿@page
+@model Slijterij_Sjonnie_Loper.Pages.Whiskey.IndexModel
+@{
+}
+
+<h1>Whiskey</h1>
+<table class="table">
+    @foreach (var whiskey in Model.Whiskeys)
+    {
+        <tr>
+            <td>@whiskey.Name</td>
+            <td>@whiskey.Kind</td>
+        </tr>
+    }
+</table>
+@Model.message

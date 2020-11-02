@@ -4,10 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slijterij_Sjonnie_Loper", "Slijterij_Sjonnie_Loper\Slijterij_Sjonnie_Loper.csproj", "{BA7CCE3B-7B2D-4ED5-BEF4-FE6ABB22726D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8052AA76-A308-43F9-B482-C65C271CB9A9} = {8052AA76-A308-43F9-B482-C65C271CB9A9}
+		{1E10988F-9F94-48E4-86A7-4EB4626D410F} = {1E10988F-9F94-48E4-86A7-4EB4626D410F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slijterij_Sjonnie_Loper.Core", "Slijterij_Sjonnie_Loper.Core\Slijterij_Sjonnie_Loper.Core.csproj", "{8052AA76-A308-43F9-B482-C65C271CB9A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slijterij_Sjonnie_Loper.Data", "Slijterij_Sjonnie_Loper.Data\Slijterij_Sjonnie_Loper.Data.csproj", "{1E10988F-9F94-48E4-86A7-4EB4626D410F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8052AA76-A308-43F9-B482-C65C271CB9A9} = {8052AA76-A308-43F9-B482-C65C271CB9A9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

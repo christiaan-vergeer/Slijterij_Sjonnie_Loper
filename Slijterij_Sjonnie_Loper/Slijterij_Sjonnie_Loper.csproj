@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Slijterij_Sjonnie_Loper.Core\Slijterij_Sjonnie_Loper.Core.csproj" />
+    <ProjectReference Include="..\Slijterij_Sjonnie_Loper.Data\Slijterij_Sjonnie_Loper.Data.csproj" />
+  </ItemGroup>
+
 </Project>
