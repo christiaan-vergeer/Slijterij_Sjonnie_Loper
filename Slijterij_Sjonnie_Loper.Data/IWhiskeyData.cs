@@ -9,7 +9,7 @@ namespace Slijterij_Sjonnie_Loper.Data
     public interface IWhiskeyData
     {
         IEnumerable<Whiskey> Getall();
-        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage);
+        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage, string searcharea, Core.Kind searchtype, int searchper);
         Whiskey GetById(int id);
         Whiskey Add(Whiskey newWhiskey);
         int Commit();
