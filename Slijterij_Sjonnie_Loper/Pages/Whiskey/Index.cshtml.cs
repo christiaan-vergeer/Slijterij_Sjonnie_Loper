@@ -14,14 +14,13 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
     {
         private readonly IConfiguration config;
         private readonly IWhiskeyData whiskeyData;
-        public IEnumerable<Core.Whiskey> Whiskeys { get; set; }
-        
+        public IEnumerable<Core.Whiskey> Whiskeys { get; set; }  
+       // public Core.Kind Kind { get; set; }
         public string message { get; set; }
-
         public string searchname { get; set; }
         public int searchage { get; set; }
         public string searcharea { get; set; }
-        public string searchtype { get; set; }
+        public int searchtype { get; set; }
         public int searchper { get; set; }
         
 
@@ -31,12 +30,12 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             this.whiskeyData = whiskeyData;
         }
 
-        public void OnGet(string searchname, int searchage, string searcharea, int searchper)
+        public void OnGet(string searchname, int searchage, string searcharea,int searchtype, int searchper)
         {
 
             message = config["message"];
             //Whiskeys = whiskeyData.Getall();
-            Whiskeys = whiskeyData.GetAllByFind(searchname, searchage, searcharea, searchper);
+            Whiskeys = whiskeyData.GetAllByFind(searchname, searchage, searcharea, searchtype, searchper);
         }
     }
 }

@@ -13,19 +13,22 @@
                 Name:
             </td>
             <td>
-                <input type="text" asp-for="searchname" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" asp-for="searchname" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
                 Age:
             </td>
             <td>
-                <input type="number" asp-for="searchage" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="number" asp-for="searchage" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
                 Area:
             </td>
             <td>
-                <input type="text" asp-for="searcharea" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" asp-for="searcharea" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
         </tr>
         @*</p>
@@ -35,13 +38,18 @@
                 Type:
             </td>
             <td>
-                <input type="text" asp-for="searchtype" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <select asp-for="searchtype" asp-items="Html.GetEnumSelectList<Core.Kind>()">
+                    <option selected="selected" value="-1">No Filter</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
                 Alchol-Percentage:
             </td>
             <td>
-                <input type="number" asp-for="searchper" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="number" asp-for="searchper" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
             </td>
