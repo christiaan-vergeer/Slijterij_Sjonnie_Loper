@@ -6,16 +6,60 @@
 <h1>Whiskey</h1>
 
 <form method="get">
-    <p>
-        Name: <input type="text" asp-for="searchname" />
-        Age: <input type="number" asp-for="searchage" />
-        Area: <input type="text" asp-for="searcharea" />
-        Type: <input type="text" asp-for="searchtype" />
-        Alchol-Percentage: <input type="number" asp-for="searchper" />
-        <input type="submit" value="Filter" />
-    </p>
+    <table>
+        <tr>
+            @*<p style="text-align:center">*@
+            <td>
+                Name:
+            </td>
+            <td>
+                <input type="text" asp-for="searchname" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                Age:
+            </td>
+            <td>
+                <input type="number" asp-for="searchage" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                Area:
+            </td>
+            <td>
+                <input type="text" asp-for="searcharea" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
+        @*</p>
+        <p style="text-align:center">*@
+        <tr>
+            <td>
+                Type:
+            </td>
+            <td>
+                <input type="text" asp-for="searchtype" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                Alchol-Percentage:
+            </td>
+            <td>
+                <input type="number" asp-for="searchper" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+            </td>
+            <td>
+                <input type="submit" value="Filter" />
+            </td>
+        </tr>
+        @*</p>*@
+    </table>
 </form>
 <table class="table">
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Age</b></td>
+        <td><b>Area</b></td>
+        <td><b>Kind</b></td>
+        <td><b>Alchol percentage</b></td>
+    </tr>
     @foreach (var whiskey in Model.Whiskeys)
     {
     <tr>
@@ -27,4 +71,3 @@
     </tr>
     }
 </table>
-@Model.message

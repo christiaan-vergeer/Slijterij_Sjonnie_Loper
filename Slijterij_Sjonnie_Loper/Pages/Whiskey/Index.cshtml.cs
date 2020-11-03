@@ -22,7 +22,7 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public int searchage { get; set; }
         public string searcharea { get; set; }
         public string searchtype { get; set; }
-        public string searchper { get; set; }
+        public int searchper { get; set; }
         
 
         public IndexModel(IConfiguration config, IWhiskeyData whiskeyData)
@@ -31,12 +31,12 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             this.whiskeyData = whiskeyData;
         }
 
-        public void OnGet(string searchname, int searchage)
+        public void OnGet(string searchname, int searchage, string searcharea, int searchper)
         {
 
             message = config["message"];
             //Whiskeys = whiskeyData.Getall();
-            Whiskeys = whiskeyData.GetAllByFind(searchname, searchage);
+            Whiskeys = whiskeyData.GetAllByFind(searchname, searchage, searcharea, searchper);
         }
     }
 }
