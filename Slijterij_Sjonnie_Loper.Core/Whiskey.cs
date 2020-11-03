@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Slijterij_Sjonnie_Loper.Core
@@ -23,9 +24,12 @@ namespace Slijterij_Sjonnie_Loper.Core
 
     public enum Kind
     {
-        blend,
-        single_malt,
-        bourbon
+        [Display(Name = "Blend")]
+        blend = 1,
+        [Display(Name = "Single Malt")] 
+        single_malt = 2,
+        [Display(Name = "Bourbon")]
+        bourbon = 3
 
     }
 }
