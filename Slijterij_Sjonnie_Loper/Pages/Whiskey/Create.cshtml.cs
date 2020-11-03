@@ -26,11 +26,12 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             this.htmlHelper = htmlHelper;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
             Kinds = htmlHelper.GetEnumSelectList<Kind>();
 
             Whiskey = new Core.Whiskey();
+            return Page();
         }
 
         public IActionResult OnPost(int whiskeyId)
