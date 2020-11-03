@@ -3,7 +3,8 @@
 @{
 }
 
-<h1>Whiskey</h1>
+<h1 style="text-align:center">Whiskey</h1>
+<br />
 
 <form method="get">
     <table>
@@ -20,8 +21,8 @@
                 Age:
             </td>
             <td>
-                <input type="number" asp-for="searchage" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" value="@Model.agevalue" asp-for="searchage" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
                 Area:
@@ -39,8 +40,8 @@
             </td>
             <td>
 
-                <select asp-for="searchtype" asp-items="Html.GetEnumSelectList<Core.Kind>()">
-                    <option selected="selected" value="-1">No Filter</option>
+                <select asp-for="searchtype" asp-items="Html.GetEnumSelectList<Core.Kind>()" onchange="javascript:this.form.submit()">
+                    <option selected="selected" value="0">No Filter</option>
                 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
@@ -48,7 +49,7 @@
                 Alchol-Percentage:
             </td>
             <td>
-                <input type="number" asp-for="searchper" />
+                <input type="text" value="@Model.pervalue" asp-for="searchper" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
@@ -60,6 +61,7 @@
         @*</p>*@
     </table>
 </form>
+<br />
 <table class="table">
     <tr>
         <td><b>Name</b></td>

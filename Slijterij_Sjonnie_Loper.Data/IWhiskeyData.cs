@@ -9,7 +9,7 @@ namespace Slijterij_Sjonnie_Loper.Data
     public interface IWhiskeyData
     {
         IEnumerable<Whiskey> Getall();
-        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage, string searcharea,int searchtype, int searchper);
+        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage, string searcharea,Core.Kind searchtype, int searchper);
     }
 
     public class InMemoryWhiskeyData : IWhiskeyData
@@ -42,14 +42,14 @@ namespace Slijterij_Sjonnie_Loper.Data
             return from r in whiskeys orderby r.Name select r;
         }
 
-        public IEnumerable<Whiskey> GetAllByFind(string SearchName, int SearchAge, string SearchArea, int SearchType, int SearchPercentage)
+        public IEnumerable<Whiskey> GetAllByFind(string SearchName, int SearchAge, string SearchArea, Core.Kind SearchType, int SearchPercentage)
         {
             return from r in whiskeys where
-                   (string.IsNullOrEmpty(SearchName) || r.Name.Contains(SearchName)) &&
+                   (string.IsNullOrEmpty(SearchName) || r.Name.Contains(SearchName, StringComparison.OrdinalIgnoreCase)) &&
                    (SearchAge == 0 || r.Age == SearchAge) &&
-                   (string.IsNullOrEmpty(SearchArea) || r.Area.Contains(SearchArea)) &&
+                   (string.IsNullOrEmpty(SearchArea) || r.Area.Contains(SearchArea, StringComparison.OrdinalIgnoreCase)) &&
                    (SearchPercentage == 0 || r.Percentage == SearchPercentage) &&
-                   (SearchType == -1 || (int)r.Kind == SearchType)
+                   (SearchType == 0 || r.Kind == SearchType)
                    orderby r.Name 
                    select r;
         }
