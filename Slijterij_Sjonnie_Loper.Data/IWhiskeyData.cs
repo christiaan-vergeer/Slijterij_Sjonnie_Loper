@@ -10,6 +10,9 @@ namespace Slijterij_Sjonnie_Loper.Data
     {
         IEnumerable<Whiskey> Getall();
         IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage);
+        Whiskey GetById(int id);
+        Whiskey Add(Whiskey newWhiskey);
+        int Commit();
     }
 
     public class InMemoryWhiskeyData : IWhiskeyData
@@ -39,6 +42,23 @@ namespace Slijterij_Sjonnie_Loper.Data
                    (age == 0 || r.Age == age)
                    orderby r.Name 
                    select r;
+        }
+
+        public Whiskey GetById(int id)
+        {
+            return whiskeys.SingleOrDefault(r => r.Id == id);
+        }
+
+        public Whiskey Add(Whiskey newWhiskey)
+        {
+            whiskeys.Add(newWhiskey);
+            newWhiskey.Id = whiskeys.Max(r => r.Id) + 1;
+            return newWhiskey;
+        }
+
+        public int Commit()
+        {
+            return 0;
         }
 
     }
