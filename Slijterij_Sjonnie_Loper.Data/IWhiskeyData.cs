@@ -9,7 +9,8 @@ namespace Slijterij_Sjonnie_Loper.Data
     public interface IWhiskeyData
     {
         IEnumerable<Whiskey> Getall();
-        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage);
+        IEnumerable<Whiskey> GetAllByFind(string searchname, int searchage, int SearchArea, Core.Kind SearchType, int SearchPercentage);
+        IEnumerable<location> GetLocations();
         Whiskey GetById(int id);
         Whiskey Add(Whiskey newWhiskey);
         int Commit();
@@ -56,11 +57,17 @@ namespace Slijterij_Sjonnie_Loper.Data
             return from r in whiskeys orderby r.Name select r;
         }
 
-        public IEnumerable<Whiskey> GetAllByFind(string SearchName, int SearchAge, string SearchArea, Core.Kind SearchType, int SearchPercentage)
+        public IEnumerable<location> GetLocations()
+        {
+            return from r in locations orderby r.Id select r;
+        }
+
+        public IEnumerable<Whiskey> GetAllByFind(string SearchName, int SearchAge, int SearchArea, Core.Kind SearchType, int SearchPercentage)
         {
             return from r in whiskeys where
                    (string.IsNullOrEmpty(SearchName) || r.Name.Contains(SearchName, StringComparison.OrdinalIgnoreCase)) &&
                    (SearchAge == 0 || r.Age == SearchAge) &&
+                   (SearchArea == 0 || r.Area.Id == SearchArea) &&
                    //(string.IsNullOrEmpty(SearchArea) || r.Area.Contains(SearchArea, StringComparison.OrdinalIgnoreCase)) &&
                    (SearchPercentage == 0 || r.Percentage == SearchPercentage) &&
                    (SearchType == 0 || r.Kind == SearchType)

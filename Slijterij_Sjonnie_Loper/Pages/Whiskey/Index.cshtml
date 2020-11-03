@@ -22,13 +22,19 @@
             </td>
             <td>
                 <input type="text" value="@Model.agevalue" asp-for="searchage" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
                 Area:
             </td>
             <td>
-                <input type="text" asp-for="searcharea" />
+                <select asp-for="searcharea"  onchange="javascript:this.form.submit()">
+                    <option selected="selected" value="0">No Filter</option>
+                    @foreach(var item in Model.Locations)
+                    {
+                        <option value="@item.Id"> @item.Name</option>
+                    }
+                </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
         </tr>
