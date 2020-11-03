@@ -46,6 +46,8 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             //Whiskeys = whiskeyData.Getall();
             Whiskeys = whiskeyData.GetAllByFind(searchname, searchage, searcharea, searchtype, searchper);
 
+            
+
             if (searchage == 0){agevalue = "";}
             else {agevalue = searchage.ToString();}
             if (searchper == 0){pervalue = "";}

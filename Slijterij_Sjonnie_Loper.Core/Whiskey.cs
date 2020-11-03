@@ -10,7 +10,8 @@ namespace Slijterij_Sjonnie_Loper.Core
         public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public string Area { get; set; }
+       // public string Area { get; set; }
+        public virtual location Area { get; set; }
         public double Percentage { get; set; }
         public Kind Kind { get; set; }
 
