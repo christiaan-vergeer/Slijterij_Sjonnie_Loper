@@ -1,4 +1,4 @@
-﻿@page "{restaurantId:int?}"
+﻿@page 
 @model Slijterij_Sjonnie_Loper.Pages.Whiskey.CreateModel
 @{
 }
@@ -6,50 +6,72 @@
 <h2>Create new whiskey</h2>
 
 <form method="post">
-
-    <input type="hidden" asp-for="Whiskey.Id" />
+    <input type="hidden" asp-for="Whiskey.Area.Id" />
     <div class="form-group">
-        <label asp-for="Whiskey.Name"></label>
-        <input asp-for="Whiskey.Name" class="form-control" />
-        <span class="text-danger" asp-validation-for="Whiskey.Name"></span>
+        <div class="col-md-10">
+            <label asp-for="Whiskey.Name"></label>
+            <input asp-for="Whiskey.Name" class="form-control" />
+            <span class="text-danger" asp-validation-for="Whiskey.Name"></span>
+        </div>
     </div>
     <div class="form-group">
-        <label asp-for="Whiskey.Age"></label>
-        <input asp-for="Whiskey.Age" class="form-control" />
-        <span class="text-danger" asp-validation-for="Whiskey.Age"></span>
+        <div class="col-md-10">
+            <label asp-for="Whiskey.Age"></label>
+            <input asp-for="Whiskey.Age" class="form-control" value="0">
+            <span class="text-danger" asp-validation-for="Whiskey.Age"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <label asp-for="Whiskey.Area"></label>
+            <select asp-for="Whiskey.Area.Id" class="form-control" >
+                @*<option selected="selected" value="0">-</option>*@
+                @foreach (var item in Model.Locations)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+            </select>
+            <span class="text-danger" asp-validation-for="Whiskey.Area"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Alcohol Percentage</label>
+            <input asp-for="Whiskey.Percentage" class="form-control" />
+            <span class="text-danger" asp-validation-for="Whiskey.Percentage"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <label asp-for="Whiskey.Kind"></label>
+            <select asp-for="Whiskey.Kind" asp-items="Model.Kinds" class="form-control"></select>
+            <span class="text-danger" asp-validation-for="Whiskey.Kind"></span>
+        </div>
     </div>
     @*<div class="form-group">
-        <label asp-for="Whiskey.Area"></label>
-        <select asp-for="Whiskey.Area" class="form-control"></select>
-        <span class="text-danger" asp-validation-for="Whiskey.Area"></span>
-    </div>*@
-    <div class="form-group">
-        <label asp-for="Whiskey.Percentage"></label>
-        <input asp-for="Whiskey.Percentage" class="form-control" />
-        <span class="text-danger" asp-validation-for="Whiskey.Percentage"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Whiskey.Kind"></label>
-        <select asp-for="Whiskey.Kind" asp-items="Model.Kinds" class="form-control"></select>
-        <span class="text-danger" asp-validation-for="Whiskey.Kind"></span>
-    </div>
-    @*<div class="form-group">
-            <label>Image label</label>
-            <input class="form-control" />
-            <span class="text-danger" asp-validation-for="Whiskey.Image"></span>
+            <div class="col-md-10">
+                <label>Image label</label>
+                <input class="form-control" />
+                <span class="text-danger" asp-validation-for="Whiskey.Image"></span>
+            </div>
         </div>*@
     <div class="form-group">
-        <label asp-for="Whiskey.Price"></label>
-        <input asp-for="Whiskey.Price" class="form-control" />
-        <span class="text-danger" asp-validation-for="Whiskey.Price"></span>
+        <div class="col-md-10">
+            <label asp-for="Whiskey.Price"></label>
+            <input asp-for="Whiskey.Price" class="form-control" />
+            <span class="text-danger" asp-validation-for="Whiskey.Price"></span>
+        </div>
     </div>
     <div class="form-group">
-        <label asp-for="Whiskey.Supply">Supply</label>
-        <input asp-for="Whiskey.Supply" class="form-control" />
-        <span class="text-danger" asp-validation-for="Whiskey.Supply"></span>
+        <div class="col-md-10">
+            <label asp-for="Whiskey.Supply">Supply</label>
+            <input asp-for="Whiskey.Supply" class="form-control" />
+            <span class="text-danger" asp-validation-for="Whiskey.Supply"></span>
+        </div>
     </div>
 
-    <br />
-    <button type="submit" class="btn btn-outline-dark">Create</button>
+    <div class="col-md-10">
+        <button type="submit" class="btn btn-outline-dark">Create</button>
+    </div>
 </form>
 

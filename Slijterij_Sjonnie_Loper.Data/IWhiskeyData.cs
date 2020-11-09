@@ -84,6 +84,7 @@ namespace Slijterij_Sjonnie_Loper.Data
         {
             whiskeys.Add(newWhiskey);
             newWhiskey.Id = whiskeys.Max(r => r.Id) + 1;
+            newWhiskey.isDeleted = false;
             return newWhiskey;
         }
 

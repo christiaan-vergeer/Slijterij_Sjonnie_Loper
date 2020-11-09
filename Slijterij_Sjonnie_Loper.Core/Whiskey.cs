@@ -7,19 +7,29 @@ namespace Slijterij_Sjonnie_Loper.Core
 {
     public class Whiskey
     {
+        [Required]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public int Age { get; set; }
-       // public string Area { get; set; }
+        [Required]
+        // public string Area { get; set; }
         public virtual location Area { get; set; }
+        [Required]
         public double Percentage { get; set; }
+        [Required]
         public Kind Kind { get; set; }
 
+        //[Required]
         //public image
+        [Required]
         public double Price { get; set; }
+        [Required]
         public int Supply { get; set; }
 
         //customers
+        [Required]
         public bool isDeleted { get; set; }
     }
 
