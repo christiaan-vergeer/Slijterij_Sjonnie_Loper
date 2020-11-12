@@ -6,6 +6,21 @@
 <h1 style="text-align:center">Whiskey</h1>
 <br />
 
+
+@if (User.Identity.IsAuthenticated)
+{
+    <table class="table table-sm">
+        @foreach(var claims in User.Claims)
+        {
+            <tr>
+                <td>@claims.Type</td>
+                <td>@claims.Value</td>
+            </tr>
+        }
+    </table>
+}
+
+
 <form method="get">
     <table>
         <tr>
@@ -84,6 +99,7 @@
         <td>@whiskey.Area.Name</td>
         <td>@whiskey.Kind</td>
         <td>@whiskey.Percentage</td>
+        <td><a asp-page="./Details" asp-route-WhiskeyId="@whiskey.Id">Details</a></td>
     </tr>
     }
 </table>

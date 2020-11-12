@@ -1,0 +1,44 @@
+﻿@page
+@model Slijterij_Sjonnie_Loper.Pages.Whiskey.DetailsModel
+@{
+}
+
+
+
+
+<h1 style="text-align:center">@Model.Whiskey.Name</h1>
+
+<div >
+    <table>
+        <tr>
+            <td>
+                imgage
+            </td>
+        </tr>
+        <tr>
+            <td>
+                age : @Model.Whiskey.Age
+            </td>
+            <td>
+                Area Of production : @Model.Whiskey.Area
+            </td>
+            <td>
+                alcholpercentage : @Model.Whiskey.Percentage
+            </td>
+        </tr>
+        <tr>
+            <td>
+                kind : @Model.Whiskey.Kind
+            </td>
+            <td>
+                price : @Model.Whiskey.Price
+            </td>
+            <td>
+                in Stock : @if(Model.Whiskey.Supply > 0) {@ViewBag.yes}
+                else { @ViewBag.no}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<a asp-page="./Index">Return</a>

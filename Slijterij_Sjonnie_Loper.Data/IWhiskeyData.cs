@@ -22,6 +22,8 @@ namespace Slijterij_Sjonnie_Loper.Data
 
         List<Whiskey> whiskeys;
 
+        //List<staff> staffs;
+
         public InMemoryWhiskeyData()
         {
             locations = new List<location>()
@@ -50,6 +52,7 @@ namespace Slijterij_Sjonnie_Loper.Data
                 new Whiskey {Id = 12,Name = "Chivas Regal", Age = 12 , Area = locations.FirstOrDefault(r => r.Id == 2), Kind = Kind.bourbon, Percentage = 45, Price = 250.00, Supply = 300, isDeleted = false}
 
             };
+
         }
 
         public IEnumerable<Whiskey> Getall()
