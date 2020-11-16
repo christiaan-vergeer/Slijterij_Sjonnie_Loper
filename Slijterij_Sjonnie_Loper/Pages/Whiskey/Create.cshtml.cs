@@ -19,8 +19,8 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         [BindProperty]
         public Core.Whiskey Whiskey { get; set; }
         public IEnumerable<SelectListItem> Kinds { get; set; }
+        [BindProperty(SupportsGet = true)]
         public IEnumerable<location> Locations { get; set; }
-        public int searchArea { get; set; }
 
         public CreateModel(IWhiskeyData whiskeyData, 
                            IHtmlHelper htmlHelper)
@@ -32,7 +32,7 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public IActionResult OnGet()
         {
             Kinds = htmlHelper.GetEnumSelectList<Kind>();
-            Locations = whiskeyData.GetLocations();
+            Locations = whiskeyData.GetLocations().AsEnumerable<location>();
 
             Whiskey = new Core.Whiskey();
             return Page();
@@ -43,12 +43,12 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             if (!ModelState.IsValid)
             {
                 Kinds = htmlHelper.GetEnumSelectList<Kind>();
-                //Locations = whiskeyData.GetLocations();
+                Locations = whiskeyData.GetLocations().AsEnumerable<location>();
 
                 return Page();
             }
+
             
-            Whiskey.Area.Id = searchArea;
             whiskeyData.Add(Whiskey);
             whiskeyData.Commit();
             return RedirectToPage("./Index");
