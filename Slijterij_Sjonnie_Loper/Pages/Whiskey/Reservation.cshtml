@@ -8,27 +8,84 @@
 
 <h5>Whiskey details:</h5>
 
-<form>
 
-    <div class="form-group">
-        <label>Name: </label>
-        <input asp-for="Whiskey.Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Whiskey.Age"></label>
-        <input asp-for="Whiskey.Age" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Whiskey.Area"></label>
-        <input asp-for="Whiskey.Area" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Whiskey.Percentage"></label>
-        <input asp-for="Whiskey.Percentage" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Whiskey.Kind"></label>
-        <input asp-for="Whiskey.Kind" class="form-control" />
-    </div>
+<form method="get">
+    <table>
+        <tr>
+            <td>
+                Name:
+            </td>
+            <td>
+                <input type="text" asp-for="searchname" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                Age:
+            </td>
+            <td>
+                <input type="text" value="@Model.agevalue" asp-for="searchage" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                Area:
+            </td>
+            <td>
+                <select asp-for="searcharea" onchange="javascript:this.form.submit()">
+                    <option selected="selected" value="0">No Filter</option>
+                    @foreach (var item in Model.Locations)
+                    {
+                        <option value="@item.Id"> @item.Name</option>
+                    }
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Type:
+            </td>
+            <td>
+
+                <select asp-for="searchtype" asp-items="Html.GetEnumSelectList<Core.Kind>()" onchange="javascript:this.form.submit()">
+                    <option selected="selected" value="0">No Filter</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                Alchol-Percentage:
+            </td>
+            <td>
+                <input type="text" value="@Model.pervalue" asp-for="searchper" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+            </td>
+            <td>
+                <input type="submit" value="Filter" />
+            </td>
+        </tr>
+    </table>
 </form>
+<br />
+<table class="table">
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Age</b></td>
+        <td><b>Area</b></td>
+        <td><b>Kind</b></td>
+        <td><b>Alchol percentage</b></td>
+    </tr>
+    @foreach (var whiskey in Model.Whiskey)
+    {
+        <tr>
+            <td>@whiskey.Name</td>
+            <td>@whiskey.Age</td>
+            <td>@whiskey.Area.Name</td>
+            <td>@whiskey.Kind</td>
+            <td>@whiskey.Percentage</td>
+            <td><a asp-page="./Reserve" asp-route-WhiskeyId="@whiskey.Id">Reserve</a></td>
+        </tr>
+    }
+</table>
+
 
