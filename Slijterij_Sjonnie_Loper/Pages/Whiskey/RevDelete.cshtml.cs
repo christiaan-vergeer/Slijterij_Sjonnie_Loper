@@ -10,8 +10,9 @@ using Slijterij_Sjonnie_Loper.Data;
 
 namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 {
-    public class DetailsModel : PageModel
+    public class RevDeleteModel : PageModel
     {
+
         private readonly IConfiguration config;
         private readonly IWhiskeyData whiskeyData;
         public Core.Whiskey Whiskey { get; set; }
@@ -19,7 +20,7 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public string yes { get; set; }
         public string no { get; set; }
 
-        public DetailsModel(IConfiguration config, IWhiskeyData whiskeyData)
+        public RevDeleteModel(IConfiguration config, IWhiskeyData whiskeyData)
         {
 
             this.config = config;
@@ -27,12 +28,29 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         }
 
 
-        public void OnGet(int WhiskeyId)
+
+        public IActionResult OnGet(int WhiskeyId)
         {
-            no = "no";
-            
             Whiskey = whiskeyData.GetById(WhiskeyId);
-            yes = "yes";
+            if(Whiskey == null)
+            {
+                return RedirectToPage("./Index");
+            }
+            return Page();
+        }
+
+        public IActionResult OnPost(int WhiskeyId)
+        {
+            var whiskey = whiskeyData.RevDelete(WhiskeyId);
+
+            whiskeyData.Commit();
+
+            if(whiskey == null)
+            {
+                return RedirectToPage("./Index");
+            }
+            TempData["message"] = $"{whiskey.Name} Revdeleted";
+            return RedirectToPage("./Index");
         }
     }
 }

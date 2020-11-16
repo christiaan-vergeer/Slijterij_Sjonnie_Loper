@@ -22,7 +22,8 @@ namespace Slijterij_Sjonnie_Loper.Core
         public Kind Kind { get; set; }
 
         //[Required]
-        //public image
+        //public byte[] Imagedata { get; set; }
+
         [Required]
         public double Price { get; set; }
         [Required]
