@@ -1,7 +1,39 @@
-﻿@page
+﻿@page "{WhiskeyId:int}"
 @model Slijterij_Sjonnie_Loper.Pages.Whiskey.ReserveModel
 @{
 }
 
 <h1>Reservation for @Model.Whiskey.Name</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Whiskey.Id" />
+    <div>
+        Name: @Model.Whiskey.Name
+    </div>
+    <div>
+        Age: @Model.Whiskey.Age
+    </div>
+    <div>
+        Area: @Model.Whiskey.Area
+    </div>
+    <div>
+        Alcohol Percentage: @Model.Whiskey.Percentage
+    </div>
+    <div>
+        Type: @Model.Whiskey.Kind
+    </div>
+    @*<div>
+        Image: @Model.Whiskey.Image
+    </div>*@
+    <div>
+        Price: @Model.Whiskey.Price
+    </div>
+    <div>
+        Supply: @Model.Whiskey.Supply
+    </div>
+    <div class="form-group">
+        <label>How many bottles do you want to reserve?</label>
+        <input asp-for="Whiskey.Reserve" class="form-control"/>
+    </div>
+</form>
 
