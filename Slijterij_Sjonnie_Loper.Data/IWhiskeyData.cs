@@ -13,6 +13,8 @@ namespace Slijterij_Sjonnie_Loper.Data
         IEnumerable<location> GetLocations();
         Whiskey GetById(int id);
         Whiskey Add(Whiskey newWhiskey);
+        Whiskey Delete(int id);
+        Whiskey RevDelete(int id);
         int Commit();
     }
 
@@ -89,6 +91,24 @@ namespace Slijterij_Sjonnie_Loper.Data
             newWhiskey.Id = whiskeys.Max(r => r.Id) + 1;
             newWhiskey.isDeleted = false;
             return newWhiskey;
+        }
+
+        public Whiskey Delete(int id)
+        {
+            var wiskey = GetById(id);
+            wiskey.isDeleted = true;
+            whiskeys.Remove(whiskeys.FirstOrDefault(o => o.Id == id));
+            whiskeys.Add(wiskey);
+            return wiskey;
+        }
+
+        public Whiskey RevDelete(int id)
+        {
+            var wiskey = GetById(id);
+            wiskey.isDeleted = false;
+            whiskeys.Remove(whiskeys.FirstOrDefault(o => o.Id == id));
+            whiskeys.Add(wiskey);
+            return wiskey;
         }
 
         public int Commit()

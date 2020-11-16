@@ -20,7 +20,7 @@
                 age : @Model.Whiskey.Age
             </td>
             <td>
-                Area Of production : @Model.Whiskey.Area
+                Area Of production : @Model.Whiskey.Area.Name
             </td>
             <td>
                 alcholpercentage : @Model.Whiskey.Percentage
@@ -34,9 +34,12 @@
                 price : @Model.Whiskey.Price
             </td>
             <td>
+                In Stock : @Model.Whiskey.Supply
+            </td>
+            @*<td>
                 in Stock : @if(Model.Whiskey.Supply > 0) {@ViewBag.yes}
                 else { @ViewBag.no}
-            </td>
+            </td>*@
         </tr>
     </table>
 </div>

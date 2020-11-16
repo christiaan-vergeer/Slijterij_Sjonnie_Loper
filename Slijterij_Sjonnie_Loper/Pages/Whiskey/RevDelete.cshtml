@@ -1,0 +1,55 @@
+﻿@page
+
+@model Slijterij_Sjonnie_Loper.Pages.Whiskey.RevDeleteModel
+@{
+}
+@*"{WhiskeyId:int}"*@
+<h3>Are you sure you want to Revert te Delete Of this whiskey?</h3>
+<div>
+    <h4>@Model.Whiskey.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Whiskey.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Whiskey.Age)
+        </dd>
+        <dt class="col-sm-2">
+            Area
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Whiskey.Area.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Whiskey.Percentage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Whiskey.Percentage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Whiskey.Kind)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Whiskey.Kind)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Whiskey.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Whiskey.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Whiskey.Supply)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Whiskey.Supply)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Whiskey.Id" />
+        <input type="submit" value="Revert" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
