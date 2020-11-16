@@ -13,7 +13,6 @@ namespace Slijterij_Sjonnie_Loper.Core
         public string Name { get; set; }
         [Required]
         public int Age { get; set; }
-        [Required]
         // public string Area { get; set; }
         public virtual location Area { get; set; }
         [Required]

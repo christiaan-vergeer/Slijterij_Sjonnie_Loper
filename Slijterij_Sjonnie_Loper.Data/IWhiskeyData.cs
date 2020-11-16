@@ -16,6 +16,7 @@ namespace Slijterij_Sjonnie_Loper.Data
         Whiskey Delete(int id);
         Whiskey RevDelete(int id);
         int Commit();
+        //ReservationOrder AddOrder(ReservationOrder newOrder);
     }
 
     public class InMemoryWhiskeyData : IWhiskeyData
@@ -23,6 +24,8 @@ namespace Slijterij_Sjonnie_Loper.Data
         List<location> locations;
 
         List<Whiskey> whiskeys;
+
+        List<ReservationOrder> orders;
 
         //List<staff> staffs;
 
@@ -54,6 +57,11 @@ namespace Slijterij_Sjonnie_Loper.Data
                 new Whiskey {Id = 12,Name = "Chivas Regal", Age = 12 , Area = locations.FirstOrDefault(r => r.Id == 2), Kind = Kind.bourbon, Percentage = 45, Price = 250.00, Supply = 300, isDeleted = false}
 
             };
+
+            //orders = new List<ReservationOrder>()
+            //{
+            //    new ReservationOrder {ReservationId = 1, WhiskeyId = whiskeys.FirstOrDefault(r => r.Id == 8), AmountBottles = 2}
+            //};
 
         }
 
@@ -116,5 +124,9 @@ namespace Slijterij_Sjonnie_Loper.Data
             return 0;
         }
 
+        //public ReservationOrder AddOrder(ReservationOrder newOrder)
+        //{
+            
+        //}
     }
 }

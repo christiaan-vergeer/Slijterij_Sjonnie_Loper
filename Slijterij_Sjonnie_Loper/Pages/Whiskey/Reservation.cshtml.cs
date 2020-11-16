@@ -26,6 +26,13 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public void OnGet(int WhiskeyId)
         {
             Whiskey = whiskeyData.GetById(WhiskeyId);
+
+            Order = new ReservationOrder();
+        }
+
+        public void OnPost()
+        {
+            Order.CustomerName = User.Identity.Name;
         }
     }
 }
