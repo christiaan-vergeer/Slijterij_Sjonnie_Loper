@@ -29,8 +29,6 @@ namespace Slijterij_Sjonnie_Loper.Core
         [Required]
         public int Supply { get; set; }
 
-        public int Reserve { get; set; }
-
         //customers
         [Required]
         public bool isDeleted { get; set; }

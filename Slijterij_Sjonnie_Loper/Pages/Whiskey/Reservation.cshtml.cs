@@ -14,6 +14,7 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         private readonly IWhiskeyData whiskeyData;
 
         public Core.Whiskey Whiskey { get; set; }
+        public ReservationOrder Order { get; set; }
         public IEnumerable<location> Locations { get; set; }
 
 
