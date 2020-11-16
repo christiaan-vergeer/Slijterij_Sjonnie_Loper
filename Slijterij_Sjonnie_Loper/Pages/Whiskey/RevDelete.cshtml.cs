@@ -17,9 +17,6 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         private readonly IWhiskeyData whiskeyData;
         public Core.Whiskey Whiskey { get; set; }
         public IEnumerable<location> Locations { get; set; }
-        public string yes { get; set; }
-        public string no { get; set; }
-
         public RevDeleteModel(IConfiguration config, IWhiskeyData whiskeyData)
         {
 
@@ -27,29 +24,16 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             this.whiskeyData = whiskeyData;
         }
 
-
-
-        public IActionResult OnGet(int WhiskeyId)
+        public void OnGet(int WhiskeyId)
         {
             Whiskey = whiskeyData.GetById(WhiskeyId);
-            if(Whiskey == null)
-            {
-                return RedirectToPage("./Index");
-            }
-            return Page();
         }
 
         public IActionResult OnPost(int WhiskeyId)
         {
-            var whiskey = whiskeyData.RevDelete(WhiskeyId);
+            whiskeyData.RevDelete(WhiskeyId);
 
-            whiskeyData.Commit();
 
-            if(whiskey == null)
-            {
-                return RedirectToPage("./Index");
-            }
-            TempData["message"] = $"{whiskey.Name} Revdeleted";
             return RedirectToPage("./Index");
         }
     }

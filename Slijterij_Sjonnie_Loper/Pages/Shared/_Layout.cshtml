@@ -28,12 +28,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Index">Browse all whiskey</a>
                         </li>
-                        @if (User.Claims.First(c => c.Type == "Role").Value == "Staff") {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Create">Add new whiskey</a>
-                        </li>
-                         }
-                    </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Create">Add new whiskey</a>
+                                </li>
+                            }
+                        }
+                        </ul>
                 </div>
             </div>
         </nav>

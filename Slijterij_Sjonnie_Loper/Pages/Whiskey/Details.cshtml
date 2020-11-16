@@ -8,7 +8,7 @@
 
 <h1 style="text-align:center">@Model.Whiskey.Name</h1>
 
-<div >
+<div>
     <table>
         <tr>
             <td>
@@ -37,11 +37,23 @@
                 In Stock : @Model.Whiskey.Supply
             </td>
             @*<td>
-                in Stock : @if(Model.Whiskey.Supply > 0) {@ViewBag.yes}
-                else { @ViewBag.no}
-            </td>*@
+                    in Stock : @if(Model.Whiskey.Supply > 0) {@ViewBag.yes}
+                    else { @ViewBag.no}
+                </td>*@
         </tr>
     </table>
 </div>
 
 <a asp-page="./Index">Return</a>
+@if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
+{
+    <td><a asp-page="./Edit" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a></td>
+    if (Model.Whiskey.isDeleted == false)
+    {
+        <td><a asp-page="./Delete" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a></td>
+    }
+    else
+    {
+        <td><a asp-page="./RevDelete" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a></td>
+    }
+}
