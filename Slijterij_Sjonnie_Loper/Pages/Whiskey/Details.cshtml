@@ -45,15 +45,18 @@
 </div>
 
 <a asp-page="./Index">Return</a>
-@if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
+@if (User.Identity.IsAuthenticated)
 {
-    <td><a asp-page="./Edit" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a></td>
-    if (Model.Whiskey.isDeleted == false)
+    @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
     {
-        <td><a asp-page="./Delete" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a></td>
-    }
-    else
-    {
-        <td><a asp-page="./RevDelete" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a></td>
+        <td><a asp-page="./Edit" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a></td>
+        if (Model.Whiskey.isDeleted == false)
+        {
+            <td><a asp-page="./Delete" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a></td>
+        }
+        else
+        {
+            <td><a asp-page="./DeleteRev" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a></td>
+        }
     }
 }
