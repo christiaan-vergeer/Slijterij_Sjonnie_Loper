@@ -12,6 +12,9 @@ using Slijterij_Sjonnie_Loper.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Slijterij_Sjonnie_Loper
 {
@@ -27,14 +30,32 @@ namespace Slijterij_Sjonnie_Loper
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddRazorPages();
             services.AddSingleton<IWhiskeyData, InMemoryWhiskeyData>();
+
+            //services.AddControllersWithViews(o => o.Filters.Add(new AuthorizeFilter()));
+            //services.AddRazorPages().AddMvcOptions(o => o.Filters.Add(new AuthorizeFilter()));
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //services.AddDefaultIdentity<Staff>(options => {
+            //    options.SignIn.RequireConfirmedAccount = true;
+            //    options.Password.RequiredLength = 3;
+            //    })
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+                        // moved to indentityhostingsstartup.cs
+
+
             services.AddRazorPages();
+
+
+
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(o => o.LoginPath = "/Identity/Account/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
