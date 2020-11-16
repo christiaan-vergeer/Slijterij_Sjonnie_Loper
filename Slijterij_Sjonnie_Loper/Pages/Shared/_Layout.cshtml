@@ -20,12 +20,6 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Index">Browse all whiskey</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
@@ -35,9 +29,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Create">Add new whiskey</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/">View Customers</a>
+                                </li>
                             }
                         }
-                        </ul>
+                    </ul>
                 </div>
             </div>
         </nav>

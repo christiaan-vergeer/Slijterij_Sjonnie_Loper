@@ -111,32 +111,34 @@
                     <td>@whiskey.Percentage</td>
                     <td style="background-color: #ffffff"><a asp-page="./Details" asp-route-WhiskeyId="@whiskey.Id">Details</a></td>
                     <td style="background-color: #ffffff"><a asp-page="./Reservation" asp-route-WhiskeyId="@whiskey.Id">Reserve</a></td>
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
                     {
-                        @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
+                        <td style="background-color: #ffffff"><a asp-page="./Edit" asp-route-WhiskeyId="@whiskey.Id">Edit Data</a></td>
+                        if (whiskey.isDeleted == false)
                         {
-                            <td style="background-color: #ffffff"><a asp-page="./Edit" asp-route-WhiskeyId="@whiskey.Id">Edit Data</a></td>
-                            if (whiskey.isDeleted == false)
-                            {
-                                <td style="background-color: #ffffff"><a asp-page="./Delete" asp-route-WhiskeyId="@whiskey.Id">Delete</a></td>
-                            }
-                            else
-                            {
-                                <td style="background-color: #ffffff"><a asp-page="./RevDelete" asp-route-WhiskeyId="@whiskey.Id">Revert Delete</a></td>
-                            }
+                            <td style="background-color: #ffffff"><a asp-page="./Delete" asp-route-WhiskeyId="@whiskey.Id">Delete</a></td>
+                        }
+                        else
+                        {
+                            <td style="background-color: #ffffff"><a asp-page="./DeleteRev" asp-route-WhiskeyId="@whiskey.Id">Revert Delete</a></td>
                         }
                     }
                 </tr>
-                }
             }
-            else{
-            <tr>
-                    <td>@whiskey.Name</td>
-                    <td>@whiskey.Age</td>
-                    <td>@whiskey.Area.Name</td>
-                    <td>@whiskey.Kind</td>
-                    <td>@whiskey.Percentage</td>
-            </tr>
+        }
+        else
+        {
+<tr>
+    @if (whiskey.isDeleted == false)
+    {
+        <td>@whiskey.Name</td>
+        <td>@whiskey.Age</td>
+        <td>@whiskey.Area.Name</td>
+        <td>@whiskey.Kind</td>
+        <td>@whiskey.Percentage</td>
+        <td><a asp-page="./Details" asp-route-WhiskeyId="@whiskey.Id">Details</a></td>
+    }
+</tr>
             }
         }
     </table>
