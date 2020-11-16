@@ -13,7 +13,6 @@ namespace Slijterij_Sjonnie_Loper.Core
         public string Name { get; set; }
         [Required]
         public int Age { get; set; }
-        [Required]
         // public string Area { get; set; }
         public virtual location Area { get; set; }
         [Required]
@@ -28,8 +27,6 @@ namespace Slijterij_Sjonnie_Loper.Core
         public double Price { get; set; }
         [Required]
         public int Supply { get; set; }
-
-        public int Reserve { get; set; }
 
         //customers
         [Required]

@@ -21,6 +21,8 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public IEnumerable<SelectListItem> Kinds { get; set; }
         [BindProperty(SupportsGet = true)]
         public IEnumerable<location> Locations { get; set; }
+        [BindProperty]
+        public int AreaId { get; set; }
 
         public CreateModel(IWhiskeyData whiskeyData, 
                            IHtmlHelper htmlHelper)
@@ -48,7 +50,7 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
                 return Page();
             }
 
-            
+            Whiskey.Area = whiskeyData.GetLocations().FirstOrDefault(a => a.Id == AreaId);
             whiskeyData.Add(Whiskey);
             whiskeyData.Commit();
             return RedirectToPage("./Index");
