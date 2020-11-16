@@ -2,3 +2,64 @@
 @model Slijterij_Sjonnie_Loper.Pages.Whiskey.EditModel
 @{
 }
+
+<h4>Edit Whiskey</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Whiskey.Id" />
+            <div class="form-group">
+                <label asp-for="Whiskey.Name" class="control-label"></label>
+                <input asp-for="Whiskey.Name" class="form-control" />
+                <span asp-validation-for="Whiskey.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whiskey.Age" class="control-label"></label>
+                <input asp-for="Whiskey.Age" class="form-control" />
+                <span asp-validation-for="Whiskey.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whiskey.Area" class="control-label"></label>
+                <select asp-for="@Model.searcharea"  class="form-control">
+                    @foreach (var item in Model.Locations)
+                    {
+                        <option value="@item.Id"> @item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Whiskey.Kind" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whiskey.Percentage" class="control-label"></label>
+                <input asp-for="Whiskey.Percentage" class="form-control" />
+                <span asp-validation-for="Whiskey.Percentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whiskey.Kind" class="control-label"></label>
+                <select asp-for="Whiskey.Kind" asp-items="Html.GetEnumSelectList<Core.Kind>()" class="form-control"></select>
+                <span asp-validation-for="Whiskey.Kind" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whiskey.Price" class="control-label"></label>
+                <input asp-for="Whiskey.Price" class="form-control" />
+                <span asp-validation-for="Whiskey.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whiskey.Supply" class="control-label"></label>
+                <input asp-for="Whiskey.Supply" class="form-control" />
+                <span asp-validation-for="Whiskey.Supply" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="./Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
