@@ -1,91 +1,39 @@
-﻿@page
+﻿@page "{WhiskeyId:int}"
 @model Slijterij_Sjonnie_Loper.Pages.Whiskey.ReservationModel
 @{
 }
 
-<h1>Whiskey Reservation</h1>
-<br />
+<h1>Reservation for @Model.Whiskey.Name</h1>
 
-<h5>Whiskey details:</h5>
-
-
-<form method="get">
-    <table>
-        <tr>
-            <td>
-                Name:
-            </td>
-            <td>
-                <input type="text" asp-for="searchname" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-                Age:
-            </td>
-            <td>
-                <input type="text" value="@Model.agevalue" asp-for="searchage" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-                Area:
-            </td>
-            <td>
-                <select asp-for="searcharea" onchange="javascript:this.form.submit()">
-                    <option selected="selected" value="0">No Filter</option>
-                    @foreach (var item in Model.Locations)
-                    {
-                        <option value="@item.Id"> @item.Name</option>
-                    }
-                </select>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Type:
-            </td>
-            <td>
-
-                <select asp-for="searchtype" asp-items="Html.GetEnumSelectList<Core.Kind>()" onchange="javascript:this.form.submit()">
-                    <option selected="selected" value="0">No Filter</option>
-                </select>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-                Alchol-Percentage:
-            </td>
-            <td>
-                <input type="text" value="@Model.pervalue" asp-for="searchper" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td>
-            </td>
-            <td>
-                <input type="submit" value="Filter" />
-            </td>
-        </tr>
-    </table>
+<form method="post">
+    <input type="hidden" asp-for="Whiskey.Id" />
+    <div>
+        Name: @Model.Whiskey.Name
+    </div>
+    <div>
+        Age: @Model.Whiskey.Age
+    </div>
+    <div>
+        Area: @Model.Whiskey.Area
+    </div>
+    <div>
+        Alcohol Percentage: @Model.Whiskey.Percentage
+    </div>
+    <div>
+        Type: @Model.Whiskey.Kind
+    </div>
+    @*<div>
+            Image: @Model.Whiskey.Image
+        </div>*@
+    <div>
+        Price: @Model.Whiskey.Price
+    </div>
+    <div>
+        Supply: @Model.Whiskey.Supply
+    </div>
+    <div class="form-group">
+        <label>How many bottles do you want to reserve?</label>
+        <input asp-for="Whiskey.Reserve" class="form-control" />
+    </div>
 </form>
-<br />
-<table class="table">
-    <tr>
-        <td><b>Name</b></td>
-        <td><b>Age</b></td>
-        <td><b>Area</b></td>
-        <td><b>Kind</b></td>
-        <td><b>Alchol percentage</b></td>
-    </tr>
-    @foreach (var whiskey in Model.Whiskey)
-    {
-        <tr>
-            <td>@whiskey.Name</td>
-            <td>@whiskey.Age</td>
-            <td>@whiskey.Area.Name</td>
-            <td>@whiskey.Kind</td>
-            <td>@whiskey.Percentage</td>
-            <td><a asp-page="./Reserve" asp-route-WhiskeyId="@whiskey.Id">Reserve</a></td>
-        </tr>
-    }
-</table>
-
 
