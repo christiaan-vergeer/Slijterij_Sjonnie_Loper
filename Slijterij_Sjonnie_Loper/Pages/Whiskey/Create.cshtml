@@ -5,7 +5,7 @@
 
 <h2>Create new whiskey</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     @*<input type="hidden" asp-for="Whiskey.Area" />*@
     <div class="form-group">
         <div class="col-md-10">
@@ -24,12 +24,12 @@
     <div class="form-group">
         <div class="col-md-10">
             <label asp-for="Whiskey.Area"></label>
-            <select asp-for="AreaId" class="form-control" >
+            <select asp-for="AreaId" class="form-control">
                 @*<option selected="selected" value="0">-</option>*@
                 @foreach (var item in Model.Locations)
-                 {
-                     <option value="@item.Id">@item.Name</option>
-                 }
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
             </select>
             <span class="text-danger" asp-validation-for="AreaId"></span>
         </div>
@@ -49,12 +49,12 @@
         </div>
     </div>
     @*<div class="form-group">
-        <div class="col-md-10">
-            <label>Image label</label>
-            <input class="form-control" />
-            <span class="text-danger" asp-validation-for="Whiskey.Image"></span>
-        </div>
-    </div>*@
+            <div class="col-md-10">
+                <label>Image label</label>
+                <input class="form-control" />
+                <span class="text-danger" asp-validation-for="Whiskey.Image"></span>
+            </div>
+        </div>*@
     <div class="form-group">
         <div class="col-md-10">
             <label asp-for="Whiskey.Price"></label>
@@ -65,10 +65,23 @@
     <div class="form-group">
         <div class="col-md-10">
             <label asp-for="Whiskey.Supply">Supply</label>
-            <input asp-for="Whiskey.Supply" class="form-control" />
+            <input asp-for="Whiskey.Supply" class="form-control"/>
             <span class="text-danger" asp-validation-for="Whiskey.Supply"></span>
         </div>
     </div>
+
+    <input type="hidden" asp-for="Whiskey.Imagedata" value="placeholder" />
+
+    Photo <input type="file" name="photo" accept="image/*" />
+    <br />
+    @*<input type="submit" value="Upload" />*@
+    @if (!string.IsNullOrEmpty(Model.FileName))
+    {
+        <span>
+            <br />
+            <img src="~/images/@Model.FileName" />
+        </span>
+    }
 
     <div class="col-md-10">
         <button type="submit" class="btn btn-outline-dark">Create</button>

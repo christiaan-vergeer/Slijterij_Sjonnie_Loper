@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Slijterij_Sjonnie_Loper.Data;
 using Slijterij_Sjonnie_Loper.Core;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 {
@@ -15,6 +18,8 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
     {
         private readonly IWhiskeyData whiskeyData;
         private readonly IHtmlHelper htmlHelper;
+        public IWebHostEnvironment IWebHostEnvironment { get; }
+        public string FileName { get; set; }
 
         [BindProperty]
         public Core.Whiskey Whiskey { get; set; }
@@ -25,10 +30,12 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public int AreaId { get; set; }
 
         public CreateModel(IWhiskeyData whiskeyData, 
-                           IHtmlHelper htmlHelper)
+                           IHtmlHelper htmlHelper,
+                           IWebHostEnvironment IWebHostEnvironment)
         {
             this.whiskeyData = whiskeyData;
             this.htmlHelper = htmlHelper;
+            this.IWebHostEnvironment = IWebHostEnvironment;
         }
 
         public IActionResult OnGet()
@@ -40,8 +47,14 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             return Page();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(IFormFile photo)
         {
+            var path = Path.Combine(IWebHostEnvironment.WebRootPath, "Images", photo.FileName);
+            var stream = new FileStream(path, FileMode.Create);
+            photo.CopyToAsync(stream);
+            FileName = photo.FileName;
+            Whiskey.Imagedata = photo.FileName;
+
             if (!ModelState.IsValid)
             {
                 Kinds = htmlHelper.GetEnumSelectList<Kind>();

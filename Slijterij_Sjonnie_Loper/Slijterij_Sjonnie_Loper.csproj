@@ -24,4 +24,15 @@
     <ProjectReference Include="..\Slijterij_Sjonnie_Loper.Data\Slijterij_Sjonnie_Loper.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\Img_1.png" />
+    <None Include="wwwroot\Images\Img_2.png" />
+    <None Include="wwwroot\Images\Img_3.png" />
+    <None Include="wwwroot\Images\Img_4.png" />
+  </ItemGroup>
+
 </Project>
