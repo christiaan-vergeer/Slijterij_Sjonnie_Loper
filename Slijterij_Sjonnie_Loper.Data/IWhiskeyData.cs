@@ -16,8 +16,10 @@ namespace Slijterij_Sjonnie_Loper.Data
         Whiskey Edit(Whiskey editwhiskey, int searcharea);
         Whiskey Delete(int id);
         Whiskey RevDelete(int id);
+        Whiskey Update(Whiskey updateWhiskey, int NewSupply);
         int Commit();
-        //ReservationOrder AddOrder(ReservationOrder newOrder);
+        ReservationOrder AddOrder(ReservationOrder newOrder);
+        IEnumerable<ReservationOrder> GetOrders();
     }
 
     public class InMemoryWhiskeyData : IWhiskeyData
@@ -59,10 +61,10 @@ namespace Slijterij_Sjonnie_Loper.Data
 
             };
 
-            //orders = new List<ReservationOrder>()
-            //{
-            //    new ReservationOrder {ReservationId = 1, WhiskeyId = whiskeys.FirstOrDefault(r => r.Id == 8), AmountBottles = 2}
-            //};
+            orders = new List<ReservationOrder>()
+            {
+                new ReservationOrder {ReservationId = 1, Whiskey = whiskeys.FirstOrDefault(r => r.Id == 8), AmountBottles = 2}
+            };
 
         }
 
@@ -129,14 +131,32 @@ namespace Slijterij_Sjonnie_Loper.Data
             return wiskey;
         }
 
+        public Whiskey Update(Whiskey updateWhiskey, int NewSupply)
+        {
+            int ID = updateWhiskey.Id;
+            updateWhiskey.Supply = NewSupply;
+            //whiskeys.Remove(whiskeys.FirstOrDefault(r => r.Id == ID));
+            //whiskeys.Add(updateWhiskey);
+            return updateWhiskey;
+        }
+
         public int Commit()
         {
             return 0;
         }
 
-        //public ReservationOrder AddOrder(ReservationOrder newOrder)
-        //{
-            
-        //}
+        public ReservationOrder AddOrder(ReservationOrder newOrder)
+        {
+            newOrder.ReservationId = orders.Max(r => r.ReservationId) + 1;
+            orders.Add(newOrder);
+            return newOrder;
+        }
+
+        public IEnumerable<ReservationOrder> GetOrders()
+        {
+            return from r in orders
+                   orderby r.ReservationId
+                   select r;
+        }
     }
 }

@@ -13,9 +13,16 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
     {
         private readonly IWhiskeyData whiskeyData;
 
+        [BindProperty]
         public Core.Whiskey Whiskey { get; set; }
+        [BindProperty]
         public ReservationOrder Order { get; set; }
-        public IEnumerable<location> Locations { get; set; }
+        [BindProperty]
+        public IEnumerable<ReservationOrder> ReservationOrders { get; set; }
+        [BindProperty]
+        public string AreaName { get; set; }
+
+        public int NewSupply;
 
 
         public ReservationModel(IWhiskeyData whiskeyData)
@@ -23,16 +30,27 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             this.whiskeyData = whiskeyData;
         }
 
-        public void OnGet(int WhiskeyId)
+        public IActionResult OnGet(int WhiskeyId)
         {
             Whiskey = whiskeyData.GetById(WhiskeyId);
+            ReservationOrders = whiskeyData.GetOrders();
+            AreaName = Whiskey.Area.Name;
 
             Order = new ReservationOrder();
+            return Page();
         }
 
-        public void OnPost()
+        public IActionResult OnPost(int WhiskeyId)
         {
-            Order.CustomerName = User.Identity.Name;
+            //Order.CustomerName = User.Identity.Name;
+            Order.Whiskey = whiskeyData.Getall().FirstOrDefault(a => a.Id == WhiskeyId);
+            Whiskey = whiskeyData.GetById(WhiskeyId);
+            NewSupply = Whiskey.Supply - Order.AmountBottles;
+            whiskeyData.AddOrder(Order);
+            whiskeyData.Update(Order.Whiskey, NewSupply);
+            whiskeyData.Commit();
+
+            return RedirectToPage("./Reservation");
         }
     }
 }
