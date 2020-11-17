@@ -8,34 +8,32 @@
 
 
 <h1 style="text-align:center">@Model.Whiskey.Name</h1>
+<div style="text-align:center" >
+    <img src="~/Images/@Model.Whiskey.Imagedata" alt="Image test"/>
+</div>
 
 <div>
-    <table>
+    <table style="text-align:center" align="center" border="0">
         <tr>
-            <td>
-                <img src="~/Images/@Model.Whiskey.Imagedata" alt="Image test" />
+            <td width="200">
+                Age : @Model.Whiskey.Age years
+            </td>
+            <td width="350">
+                Area of production : @Model.Whiskey.Area.Name
+            </td>
+            <td  width="200">
+                Alcholpercentage : @Model.Whiskey.Percentage%
             </td>
         </tr>
-        <tr>
+        <tr >
             <td>
-                age : @Model.Whiskey.Age
+                Type : @Model.Whiskey.Kind
             </td>
             <td>
-                Area Of production : @Model.Whiskey.Area.Name
+                Price : $@Model.Whiskey.Price
             </td>
             <td>
-                alcholpercentage : @Model.Whiskey.Percentage
-            </td>
-        </tr>
-        <tr>
-            <td>
-                kind : @Model.Whiskey.Kind
-            </td>
-            <td>
-                price : @Model.Whiskey.Price
-            </td>
-            <td>
-                In Stock : @Model.Whiskey.Supply
+                In stock : @Model.Whiskey.Supply
             </td>
             @*<td>
                     in Stock : @if(Model.Whiskey.Supply > 0) {@ViewBag.yes}
@@ -45,19 +43,26 @@
     </table>
 </div>
 
-<a asp-page="./Index">Return</a>
-@if (User.Identity.IsAuthenticated)
-{
-    @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
+<div style="text-align:center">
+    <br />
+    <a asp-page="./Index">Return</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    @if (User.Identity.IsAuthenticated)
     {
-        <td><a asp-page="./Edit" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a></td>
-        if (Model.Whiskey.isDeleted == false)
+        @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
         {
-            <td><a asp-page="./Delete" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a></td>
-        }
-        else
-        {
-            <td><a asp-page="./DeleteRev" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a></td>
+            <a asp-page="./Edit" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+            if (Model.Whiskey.isDeleted == false)
+            {
+                <a asp-page="./Delete" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a>
+
+            }
+            else
+            {
+                <a asp-page="./DeleteRev" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a>
+
+            }
         }
     }
-}
+</div>

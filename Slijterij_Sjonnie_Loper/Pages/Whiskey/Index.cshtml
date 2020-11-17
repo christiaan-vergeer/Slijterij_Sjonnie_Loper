@@ -128,17 +128,17 @@
         }
         else
         {
-<tr>
-    @if (whiskey.isDeleted == false)
-    {
-        <td>@whiskey.Name</td>
-        <td>@whiskey.Age</td>
-        <td>@whiskey.Area.Name</td>
-        <td>@whiskey.Kind</td>
-        <td>@whiskey.Percentage</td>
-        <td><a asp-page="./Details" asp-route-WhiskeyId="@whiskey.Id">Details</a></td>
-    }
-</tr>
-            }
+            <tr>
+                @if (whiskey.isDeleted == false)
+                {
+                    <td>@whiskey.Name</td>
+                    <td>@whiskey.Age</td>
+                    <td>@whiskey.Area.Name</td>
+                    <td>@whiskey.Kind</td>
+                    <td>@whiskey.Percentage</td>
+                    <td><a asp-page="./Details" asp-route-WhiskeyId="@whiskey.Id">Details</a></td>
+                }
+            </tr>
         }
-    </table>
+     }
+</table>

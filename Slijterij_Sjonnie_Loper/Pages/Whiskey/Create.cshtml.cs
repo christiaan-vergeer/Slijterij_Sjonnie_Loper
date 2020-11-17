@@ -42,7 +42,6 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         {
             Kinds = htmlHelper.GetEnumSelectList<Kind>();
             Locations = whiskeyData.GetLocations();
-
             Whiskey = new Core.Whiskey();
             return Page();
         }
