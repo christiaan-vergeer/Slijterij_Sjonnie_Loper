@@ -17,7 +17,8 @@ namespace Slijterij_Sjonnie_Loper.Data
         Whiskey Delete(int id);
         Whiskey RevDelete(int id);
         int Commit();
-        //ReservationOrder AddOrder(ReservationOrder newOrder);
+        ReservationOrder AddOrder(ReservationOrder newOrder);
+        IEnumerable<ReservationOrder> GetOrders();
     }
 
     public class InMemoryWhiskeyData : IWhiskeyData
@@ -59,10 +60,10 @@ namespace Slijterij_Sjonnie_Loper.Data
 
             };
 
-            //orders = new List<ReservationOrder>()
-            //{
-            //    new ReservationOrder {ReservationId = 1, WhiskeyId = whiskeys.FirstOrDefault(r => r.Id == 8), AmountBottles = 2}
-            //};
+            orders = new List<ReservationOrder>()
+            {
+                new ReservationOrder {ReservationId = 1, Whiskey = whiskeys.FirstOrDefault(r => r.Id == 8), AmountBottles = 2}
+            };
 
         }
 
@@ -134,9 +135,18 @@ namespace Slijterij_Sjonnie_Loper.Data
             return 0;
         }
 
-        //public ReservationOrder AddOrder(ReservationOrder newOrder)
-        //{
-            
-        //}
+        public ReservationOrder AddOrder(ReservationOrder newOrder)
+        {
+            orders.Add(newOrder);
+            newOrder.ReservationId = orders.Max(r => r.ReservationId) + 1;
+            return newOrder;
+        }
+
+        public IEnumerable<ReservationOrder> GetOrders()
+        {
+            return from r in orders
+                   orderby r.ReservationId
+                   select r;
+        }
     }
 }

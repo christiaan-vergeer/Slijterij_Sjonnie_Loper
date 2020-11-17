@@ -13,10 +13,14 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
     {
         private readonly IWhiskeyData whiskeyData;
 
+        [BindProperty(SupportsGet = true)]
         public Core.Whiskey Whiskey { get; set; }
+        [BindProperty]
         public ReservationOrder Order { get; set; }
-        public IEnumerable<location> Locations { get; set; }
+        public IEnumerable<ReservationOrder> ReservationOrders { get; set; }
 
+        //[BindProperty(SupportsGet = true)]
+        //public int SearchId { get; set; }
 
         public ReservationModel(IWhiskeyData whiskeyData)
         {
@@ -26,13 +30,17 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public void OnGet(int WhiskeyId)
         {
             Whiskey = whiskeyData.GetById(WhiskeyId);
+            ReservationOrders = whiskeyData.GetOrders();
 
             Order = new ReservationOrder();
         }
 
-        public void OnPost()
+        public void OnPost(int WhiskeyId)
         {
-            Order.CustomerName = User.Identity.Name;
+            //Order.CustomerName = User.Identity.Name;
+            //Order.Whiskey = whiskeyData.Getall().FirstOrDefault(a => a.Id == WhiskeyId);
+            whiskeyData.AddOrder(Order);
+            whiskeyData.Commit();
         }
     }
 }
