@@ -9,6 +9,7 @@ namespace Slijterij_Sjonnie_Loper.Core
     {
         public int ReservationId { get; set; }
         public virtual Whiskey Whiskey { get; set; }
+        //Customer Name
         public string CustomerName { get; set; }
         [Required]
         public int AmountBottles { get; set; }

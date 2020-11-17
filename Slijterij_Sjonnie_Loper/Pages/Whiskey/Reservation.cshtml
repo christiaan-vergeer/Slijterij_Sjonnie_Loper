@@ -49,7 +49,7 @@
     <tr>
         <td><b>Reservation Id</b></td>
         <td><b>Name whiskey</b></td>
-        @*<td><b>Customer Name</b></td>*@
+        <td><b>Customer Name</b></td>
         <td><b>Amount of bottles</b></td>
     </tr>
     @foreach (var orders in Model.ReservationOrders)
@@ -57,7 +57,7 @@
         <tr>
             <td>@orders.ReservationId</td>
             <td>@orders.Whiskey.Name</td>
-            @*<td>@orders.CustomerName</td>*@
+            <td>@orders.CustomerName</td>
             <td>@orders.AmountBottles</td>
         </tr>
     }

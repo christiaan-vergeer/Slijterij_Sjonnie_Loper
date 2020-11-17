@@ -42,14 +42,14 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 
         public IActionResult OnPost(int WhiskeyId)
         {
-            //Order.CustomerName = User.Identity.Name;
+            Order.CustomerName = User.Identity.Name;
             Order.Whiskey = whiskeyData.Getall().FirstOrDefault(a => a.Id == WhiskeyId);
             Whiskey = whiskeyData.GetById(WhiskeyId);
+
             NewSupply = Whiskey.Supply - Order.AmountBottles;
             whiskeyData.AddOrder(Order);
             whiskeyData.Update(Order.Whiskey, NewSupply);
             whiskeyData.Commit();
-
             return RedirectToPage("./Reservation");
         }
     }
