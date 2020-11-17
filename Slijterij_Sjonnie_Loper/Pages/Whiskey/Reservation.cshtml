@@ -14,7 +14,7 @@
         Age: @Model.Whiskey.Age
     </div>
     <div class="col-10">
-        Area: @Model.Whiskey.Area.Name
+        Area: @Model.AreaName
     </div>
     <div class="col-10">
         Alcohol Percentage: @Model.Whiskey.Percentage
@@ -34,7 +34,8 @@
     <br />
     <div class="col-5">
         <label>How many bottles do you want to reserve?</label>
-        <input asp-for="Order.AmountBottles" min="0" />
+        <input asp-for="Order.AmountBottles" min="1" />
+        <span class="text-danger" asp-validation-for="Order.AmountBottles"></span>
     </div>
     <div class="col-10">
         <br />

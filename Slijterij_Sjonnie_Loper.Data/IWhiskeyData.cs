@@ -16,6 +16,7 @@ namespace Slijterij_Sjonnie_Loper.Data
         Whiskey Edit(Whiskey editwhiskey, int searcharea);
         Whiskey Delete(int id);
         Whiskey RevDelete(int id);
+        Whiskey Update(Whiskey updateWhiskey, int NewSupply);
         int Commit();
         ReservationOrder AddOrder(ReservationOrder newOrder);
         IEnumerable<ReservationOrder> GetOrders();
@@ -130,6 +131,15 @@ namespace Slijterij_Sjonnie_Loper.Data
             return wiskey;
         }
 
+        public Whiskey Update(Whiskey updateWhiskey, int NewSupply)
+        {
+            int ID = updateWhiskey.Id;
+            updateWhiskey.Supply = NewSupply;
+            //whiskeys.Remove(whiskeys.FirstOrDefault(r => r.Id == ID));
+            //whiskeys.Add(updateWhiskey);
+            return updateWhiskey;
+        }
+
         public int Commit()
         {
             return 0;
@@ -137,8 +147,8 @@ namespace Slijterij_Sjonnie_Loper.Data
 
         public ReservationOrder AddOrder(ReservationOrder newOrder)
         {
-            orders.Add(newOrder);
             newOrder.ReservationId = orders.Max(r => r.ReservationId) + 1;
+            orders.Add(newOrder);
             return newOrder;
         }
 
