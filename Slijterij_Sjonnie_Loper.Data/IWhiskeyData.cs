@@ -44,18 +44,18 @@ namespace Slijterij_Sjonnie_Loper.Data
 
             whiskeys = new List<Whiskey>()
             {
-                new Whiskey {Id = 1,Name = "The famous Grouse",Age = 30, Area = locations.FirstOrDefault(r => r.Id == 1), Kind = Kind.blend, Percentage = 34, Price = 18.99, Supply = 50,isDeleted = false },
-                new Whiskey {Id = 2,Name = "Jameson", Age = 120, Area = locations.FirstOrDefault(r => r.Id == 2),Kind = Kind.bourbon, Percentage = 40, Price = 39.99, Supply=12, isDeleted = false},
-                new Whiskey {Id = 3,Name = "highland Baron Blended Whiskey", Age = 5 ,Area = locations.FirstOrDefault(r => r.Id == 3), Kind = Kind.single_malt, Percentage = 90, Price = 99.99, Supply = 150, isDeleted = false},
-                new Whiskey {Id = 4,Name = "Glen Talloch", Age = 46 , Area = locations.FirstOrDefault(r => r.Id == 4), Kind = Kind.bourbon, Percentage = 30, Price = 15.50, Supply = 25, isDeleted = false},
-                new Whiskey {Id = 5,Name = "Jura journey", Age = 35 , Area = locations.FirstOrDefault(r => r.Id == 3), Kind = Kind.bourbon, Percentage = 30, Price = 99.99, Supply = 150, isDeleted = false},
-                new Whiskey {Id = 6,Name = "Ballentine´s", Age = 73 , Area = locations.FirstOrDefault(r => r.Id == 5), Kind = Kind.blend, Percentage = 90, Price = 25.00, Supply = 34, isDeleted = false},
-                new Whiskey {Id = 7,Name = "Grant´s", Age = 9 , Area = locations.FirstOrDefault(r => r.Id == 4), Kind = Kind.single_malt, Percentage = 90, Price = 15.00, Supply = 28, isDeleted = false},
-                new Whiskey {Id = 8,Name = "Johnnie Walker Red Label", Age = 100 , Area = locations.FirstOrDefault(r => r.Id == 1), Kind = Kind.single_malt, Percentage = 45, Price = 69.99, Supply = 93, isDeleted = false},
-                new Whiskey {Id = 9,Name = "Talisker", Age = 62 , Area = locations.FirstOrDefault(r => r.Id == 2), Kind = Kind.blend, Percentage = 45, Price = 12.00, Supply = 1, isDeleted = false},
-                new Whiskey {Id = 10,Name = "Singleton Malt Master", Age = 93 , Area = locations.FirstOrDefault(r => r.Id == 3), Kind = Kind.blend, Percentage = 30, Price = 7.99, Supply = 27, isDeleted = false},
-                new Whiskey {Id = 11,Name = "Jameson Caskmates", Age = 140 , Area = locations.FirstOrDefault(r => r.Id == 6), Kind = Kind.single_malt, Percentage = 45, Price = 99.99, Supply = 100, isDeleted = false},
-                new Whiskey {Id = 12,Name = "Chivas Regal", Age = 12 , Area = locations.FirstOrDefault(r => r.Id == 2), Kind = Kind.bourbon, Percentage = 45, Price = 250.00, Supply = 300, isDeleted = false}
+                new Whiskey {Id = 1,Name = "The famous Grouse", Imagedata="Img_1.png",Age = 30, Area = locations.FirstOrDefault(r => r.Id == 1), Kind = Kind.blend, Percentage = 34, Price = 18.99, Supply = 50,isDeleted = false },
+                new Whiskey {Id = 2,Name = "Jameson", Imagedata="Img_2.png", Age = 120, Area = locations.FirstOrDefault(r => r.Id == 2),Kind = Kind.bourbon, Percentage = 40, Price = 39.99, Supply=12, isDeleted = false},
+                new Whiskey {Id = 3,Name = "highland Baron Blended Whiskey", Imagedata="Img_3.png", Age = 5 ,Area = locations.FirstOrDefault(r => r.Id == 3), Kind = Kind.single_malt, Percentage = 90, Price = 99.99, Supply = 150, isDeleted = false},
+                new Whiskey {Id = 4,Name = "Glen Talloch", Imagedata="Img_4.png", Age = 46 , Area = locations.FirstOrDefault(r => r.Id == 4), Kind = Kind.bourbon, Percentage = 30, Price = 15.50, Supply = 25, isDeleted = false},
+                new Whiskey {Id = 5,Name = "Jura journey", Imagedata="Img_5.png", Age = 35 , Area = locations.FirstOrDefault(r => r.Id == 3), Kind = Kind.bourbon, Percentage = 30, Price = 99.99, Supply = 150, isDeleted = false},
+                new Whiskey {Id = 6,Name = "Ballentine´s", Imagedata="Img_6.png", Age = 73 , Area = locations.FirstOrDefault(r => r.Id == 5), Kind = Kind.blend, Percentage = 90, Price = 25.00, Supply = 34, isDeleted = false},
+                new Whiskey {Id = 7,Name = "Grant´s", Imagedata="Img_7.png", Age = 9 , Area = locations.FirstOrDefault(r => r.Id == 4), Kind = Kind.single_malt, Percentage = 90, Price = 15.00, Supply = 28, isDeleted = false},
+                new Whiskey {Id = 8,Name = "Johnnie Walker Red Label", Imagedata="Img_8.png", Age = 100 , Area = locations.FirstOrDefault(r => r.Id == 1), Kind = Kind.single_malt, Percentage = 45, Price = 69.99, Supply = 93, isDeleted = false},
+                new Whiskey {Id = 9,Name = "Talisker", Imagedata="Img_9.png", Age = 62 , Area = locations.FirstOrDefault(r => r.Id == 2), Kind = Kind.blend, Percentage = 45, Price = 12.00, Supply = 1, isDeleted = false},
+                new Whiskey {Id = 10,Name = "Singleton Malt Master", Imagedata="Img_10.png", Age = 93 , Area = locations.FirstOrDefault(r => r.Id == 3), Kind = Kind.blend, Percentage = 30, Price = 7.99, Supply = 27, isDeleted = false},
+                new Whiskey {Id = 11,Name = "Jameson Caskmates", Imagedata="Img_11.png", Age = 140 , Area = locations.FirstOrDefault(r => r.Id == 6), Kind = Kind.single_malt, Percentage = 45, Price = 99.99, Supply = 100, isDeleted = false},
+                new Whiskey {Id = 12,Name = "Chivas Regal", Imagedata="Img_12.png", Age = 12 , Area = locations.FirstOrDefault(r => r.Id == 2), Kind = Kind.bourbon, Percentage = 45, Price = 250.00, Supply = 300, isDeleted = false}
 
             };
 
@@ -85,7 +85,7 @@ namespace Slijterij_Sjonnie_Loper.Data
                    //(string.IsNullOrEmpty(SearchArea) || r.Area.Contains(SearchArea, StringComparison.OrdinalIgnoreCase)) &&
                    (SearchPercentage == 0 || r.Percentage == SearchPercentage) &&
                    (SearchType == 0 || r.Kind == SearchType)
-                   orderby r.Name 
+                   orderby r.Name
                    select r;
         }
 

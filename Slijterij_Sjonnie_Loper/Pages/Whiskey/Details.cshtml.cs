@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Slijterij_Sjonnie_Loper.Core;
 using Slijterij_Sjonnie_Loper.Data;
+
 
 namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 {
@@ -14,10 +18,13 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
     {
         private readonly IConfiguration config;
         private readonly IWhiskeyData whiskeyData;
+
         public Core.Whiskey Whiskey { get; set; }
         public IEnumerable<location> Locations { get; set; }
-        public string yes { get; set; }
+        public string ImagePath { get; set; }
         public string no { get; set; }
+
+
 
         public DetailsModel(IConfiguration config, IWhiskeyData whiskeyData)
         {
@@ -29,10 +36,14 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 
         public void OnGet(int WhiskeyId)
         {
-            no = "no";
-            
+            //ImagePath = "Img_1.png";
+
+
             Whiskey = whiskeyData.GetById(WhiskeyId);
-            yes = "yes";
+        }
+
+        public void OnPost()
+        {
         }
     }
 }
