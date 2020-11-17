@@ -45,24 +45,26 @@
 
 <div style="text-align:center">
     <br />
-    <a asp-page="./Index">Return</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a asp-page="./Index" class="btn btn-outline-dark">Return to list</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
     @if (User.Identity.IsAuthenticated)
     {
+        @if (User.Claims.First(c => c.Type == "Role").Value == "Customer")
+        {
+            <a asp-page="./Reservation" class="btn btn-primary" asp-route-WhiskeyId="@Model.Whiskey.Id">Reserve</a>
+        }
         @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
         {
-            <a asp-page="./Edit" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a>
-            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+            <a asp-page="./Edit" class="btn btn-outline-dark" asp-route-WhiskeyId="@Model.Whiskey.Id">Edit Data</a>
+            <b>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</b>
             if (Model.Whiskey.isDeleted == false)
             {
-                <a asp-page="./Delete" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a>
-
+                <a asp-page="./Delete" class="btn btn-danger" asp-route-WhiskeyId="@Model.Whiskey.Id">Delete</a>
             }
             else
             {
-                <a asp-page="./DeleteRev" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a>
-
+                <a asp-page="./DeleteRev" class="btn btn-danger" asp-route-WhiskeyId="@Model.Whiskey.Id">Revert Delete</a>
             }
-        }
-    }
+         }
+     }
 </div>
