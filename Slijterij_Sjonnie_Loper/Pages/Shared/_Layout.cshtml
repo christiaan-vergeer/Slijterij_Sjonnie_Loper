@@ -22,11 +22,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Index">Browse all whiskey</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Orders">View orders</a>
-                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Whiskey/Orders">View orders</a>
+                            </li>
                             @if (User.Claims.First(c => c.Type == "Role").Value == "Staff")
                             {
                                 <li class="nav-item">

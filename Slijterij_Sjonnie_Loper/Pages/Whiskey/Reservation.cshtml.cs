@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Slijterij_Sjonnie_Loper.Data;
 using Slijterij_Sjonnie_Loper.Core;
-using Slijterij_Sjonnie_Loper.Areas;
 
 namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 {
@@ -42,7 +41,7 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 
         public IActionResult OnPost(int WhiskeyId)
         {
-            Order.CustomerName = User.Identity.Name;
+            Order.CustomerName = User.FindFirst("fullname").Value;
             Order.Whiskey = whiskeyData.Getall().FirstOrDefault(a => a.Id == WhiskeyId);
             Whiskey = whiskeyData.GetById(WhiskeyId);
 

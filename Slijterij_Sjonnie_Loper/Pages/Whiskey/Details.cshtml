@@ -33,7 +33,14 @@
                 Price : $@Model.Whiskey.Price
             </td>
             <td>
-                In stock : @Model.Whiskey.Supply
+                @if (Model.Whiskey.Supply <= 0)
+                {
+                    <label>In stock : Out of stock</label>
+                }
+                else
+                {
+                    <label>In stock : @Model.Whiskey.Supply</label>
+                }
             </td>
             @*<td>
                     in Stock : @if(Model.Whiskey.Supply > 0) {@ViewBag.yes}

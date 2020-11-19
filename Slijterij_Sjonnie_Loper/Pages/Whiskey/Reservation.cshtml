@@ -26,7 +26,14 @@
         Price: @Model.Whiskey.Price
     </div>
     <div class="col-10">
-        Supply: @Model.Whiskey.Supply
+        @if (Model.Whiskey.Supply <= 0)
+        {
+            <label>Supply: Out of stock</label>
+        }
+        else
+        {
+            <label>Supply: @Model.Whiskey.Supply</label>
+        }
     </div>
     <br />
     <div class="col-5">

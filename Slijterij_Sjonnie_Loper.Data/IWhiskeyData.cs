@@ -63,7 +63,7 @@ namespace Slijterij_Sjonnie_Loper.Data
 
             orders = new List<ReservationOrder>()
             {
-                new ReservationOrder {ReservationId = 1, Whiskey = whiskeys.FirstOrDefault(r => r.Id == 8), CustomerName = "user@user.nl", AmountBottles = 2}
+                new ReservationOrder {ReservationId = 1, Whiskey = whiskeys.FirstOrDefault(r => r.Id == 8), CustomerName = /*User.FindFirst("fullname").Value*/ "John Smith", AmountBottles = 2}
             };
 
         }
