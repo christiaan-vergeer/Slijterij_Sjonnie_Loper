@@ -22,6 +22,8 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public IEnumerable<Core.Whiskey> Whiskeys { get; set; }  
         public IEnumerable<location> Locations { get; set; }
         public string message { get; set; }
+        [TempData]
+        public string Message { get; set; }
 
         public string searchname { get; set; }
         public int searchage { get; set; }

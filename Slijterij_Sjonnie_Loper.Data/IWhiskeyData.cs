@@ -63,7 +63,7 @@ namespace Slijterij_Sjonnie_Loper.Data
 
             orders = new List<ReservationOrder>()
             {
-                new ReservationOrder {ReservationId = 1, Whiskey = whiskeys.FirstOrDefault(r => r.Id == 8), AmountBottles = 2}
+                new ReservationOrder {ReservationId = 1, Whiskey = whiskeys.FirstOrDefault(r => r.Id == 8), CustomerName = "user@user.nl", AmountBottles = 2}
             };
 
         }
@@ -133,10 +133,7 @@ namespace Slijterij_Sjonnie_Loper.Data
 
         public Whiskey Update(Whiskey updateWhiskey, int NewSupply)
         {
-            int ID = updateWhiskey.Id;
             updateWhiskey.Supply = NewSupply;
-            //whiskeys.Remove(whiskeys.FirstOrDefault(r => r.Id == ID));
-            //whiskeys.Add(updateWhiskey);
             return updateWhiskey;
         }
 

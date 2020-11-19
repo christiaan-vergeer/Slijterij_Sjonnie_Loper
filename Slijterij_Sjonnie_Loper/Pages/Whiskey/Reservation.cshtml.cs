@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Slijterij_Sjonnie_Loper.Data;
 using Slijterij_Sjonnie_Loper.Core;
+using Slijterij_Sjonnie_Loper.Areas;
 
 namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
 {
@@ -23,7 +24,6 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
         public string AreaName { get; set; }
 
         public int NewSupply;
-
 
         public ReservationModel(IWhiskeyData whiskeyData)
         {
@@ -50,7 +50,9 @@ namespace Slijterij_Sjonnie_Loper.Pages.Whiskey
             whiskeyData.AddOrder(Order);
             whiskeyData.Update(Order.Whiskey, NewSupply);
             whiskeyData.Commit();
-            return RedirectToPage("./Reservation");
+            TempData["Message"] = "Your order is placed!";
+
+            return RedirectToPage("./Index");
         }
     }
 }
